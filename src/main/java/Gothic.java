@@ -24,28 +24,24 @@ public class Gothic {
     }
 
     public void gothicCopySaves() throws IOException {
-        Calendar calendar =  Calendar.getInstance();
-        String fullCopyPath = copyPath + "\\" + calendar.getTimeInMillis();
+        Calendar calendar = Calendar.getInstance();
+        String fullCopyPath = copyPath + "/" + calendar.getTimeInMillis();
         File file = new File(savePath);
         File fileNew = new File(fullCopyPath);
         fileNew.mkdirs();
-//        File saves[] = file.listFiles();
-//        String savesName[] = file.list();
-//
-//        for (int i = 0; i < saves.length; i++) {
-//            File direct[] = saves[i].listFiles();
-//            String directName[] = saves[i].list();
-//
-//            for (int j = 0; j < direct.length; j++) {
-//                String files[] = direct[j].list();
-//
-//                for (int k = 0; k < files.length; k++) {
-//                    File currentFile = new File(file.getPath() + "\\" + savesName[i] + "\\" + directName[j] + "\\" + files[k]);
-//                    File endSavePath = new File(fileNew.getPath() + "\\" + savesName[i] + "\\" + directName[j] + "\\" + files[k]);
-//                    Files.copy(currentFile.toPath(), fileNew.toPath() + "\\" + files[k]);
-//                }
-//            }
-//        }
+        File saves[] = file.listFiles();
+        String savesName[] = file.list();
+
+        for (int i = 0; i < saves.length; i++) {
+            String directName[] = saves[i].list();
+
+            for (int j = 0; j < directName.length; j++) {
+                File currentFile = new File(file.getPath() + "/" + savesName[i] + "/" + directName[j]);
+                File endSavePath = new File(fileNew.getPath() + "/" + savesName[i] + "/" + directName[j]);
+                endSavePath.mkdirs();
+                Files.copy(currentFile.toPath(), endSavePath.toPath());
+            }
+        }
 
     }
 
