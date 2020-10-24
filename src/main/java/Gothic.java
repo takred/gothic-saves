@@ -1,20 +1,6 @@
-import java.io.*;
+import java.io.IOException;
 
-public class Gothic {
-    String filePath;
+public interface Gothic {
 
-    public Gothic(String filePath) {
-        this.filePath = filePath;
-    }
-
-    public boolean gothicIsRunning() throws IOException {
-        File file = new File(filePath);
-        FileReader fileReader = new FileReader(file);
-        BufferedReader reader = new BufferedReader(fileReader);
-        boolean result = reader.readLine().equals("true");
-        reader.close();
-
-        return result;
-    }
-
+    boolean gothicIsRunning() throws IOException;
 }
